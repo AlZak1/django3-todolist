@@ -1,0 +1,21 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<div class="ow justify-content-md-center mt-2">
+  <h1>Are you sure you want to delete {{"item"}} ?</h1>
+</div>
+
+<div class="ow justify-content-md-center mt-2">
+  <a href="{% url 'home' %}">Cancle</a>
+</div>
+
+
+<form method="POST" action="">
+  {% csrf_token %}
+  {% for f in form %}
+    {{ f }}
+  {% endfor %}
+  <input type="submit" name="Confirm" value="Delete">
+</form>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+  <h1>To Do List</h1>
+
+
+  <form method="post" action="/">
+
+      {% csrf_token %}
+
+      {{ form }}
+
+      <input class="btn btn-info" type="submit" name="Create Todo" value="Create">
+
+  </form>
+
+<div class="todo-list">
+  {% for todo in todos %}
+    <div class="item-row">
+      <a class="btn btn-sm btn-info" href="{% url 'updatetodo' todo.id %}">Update</a>
+      <a class="btn btn-sm btn-info" href="{% url 'deletetodo' todo.id %}">Delete</a>
+
+      {% if todo.complete %}
+        <strike>{{ todo.title }}{{ todo.created }}</strike>
+      {% else %}
+        <span>{{ todo.title }}{{ todo.created }}</span>
+      {% endif %}
+
+
+
+
+    </div>
+
+  {% endfor %}
+</div>
+
+
+
+  {% endblock %}
