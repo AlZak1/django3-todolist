@@ -14,7 +14,6 @@ def home(request):
     return render(request, 'todo/home.html')
 
 
-
 def signupuser(request):
     if request.method == 'GET':
         return render(request, 'todo/signupuser.html', {'form':UserCreationForm()})
